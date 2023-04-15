@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:health_ai/Screens/Patients/dashboard.dart';
-import 'package:health_ai/Screens/Patients/patients_handling.dart';
+import 'package:health_ai/Screens/Patients/patients_history.dart';
 import 'package:health_ai/Screens/settings_screen.dart';
 
 class PatientMainPage extends StatefulWidget {

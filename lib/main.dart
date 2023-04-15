@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_ai/Screens/Patients/dashboard.dart';
 import 'package:health_ai/Screens/Patients/login_screen.dart';
 import 'package:health_ai/Screens/Patients/mainPage.dart';
-import 'package:health_ai/Screens/Patients/patients_handling.dart';
+import 'package:health_ai/Screens/Patients/patients_history.dart';
 import 'package:health_ai/Screens/Patients/sign_up.dart';
 import 'package:health_ai/Screens/doctor/login_screen.dart';
 import 'package:health_ai/Screens/doctor/sign_up.dart';
