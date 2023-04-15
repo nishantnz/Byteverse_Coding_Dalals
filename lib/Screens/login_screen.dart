@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
     };
 
     final http.Response response = await http.post(uri, headers: headers);
-    final authorizationHeaderValue = response.headers['authorization'];
+    final authorizationHeaderValue = response.headers;
     print("hiii " + authorizationHeaderValue.toString());
     print(response.headers.toString());
   }
