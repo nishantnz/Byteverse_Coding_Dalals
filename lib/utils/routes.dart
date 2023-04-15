@@ -6,4 +6,6 @@ class MyRoutes {
   static String mainPage = "/mainpage";
   static String doctorOrPatient = "/docpat";
   static String signUp = "/SignUp";
+  static String patientDashboard = "/patientDashboard";
+  static String patientHistory = "/patientHistory";
 }
