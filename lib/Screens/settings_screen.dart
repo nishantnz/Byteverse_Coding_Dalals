@@ -46,9 +46,18 @@ class SettingsPage extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, MyRoutes.profile);
                   },
-                  child: InkWell(
-                    splashColor: Colors.blue,
-                    child: CommonWidget(Icons.person, 'Account'),
+                  child: Ink(
+                    child: Hero(
+                      tag: 'account',
+                      child: InkWell(
+                        splashColor: Colors.blue,
+                        highlightColor: Colors.green,
+                        onTap: () {
+                          Navigator.pushNamed(context, MyRoutes.profile);
+                        },
+                        child: CommonWidget(Icons.person, 'Account'),
+                      ),
+                    ),
                   ),
                 ),
                 CommonWidget(Icons.notifications, 'Notification'),
