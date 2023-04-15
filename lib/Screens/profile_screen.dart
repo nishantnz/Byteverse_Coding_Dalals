@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('Profiles'),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(vertical: 30, horizontal: 4),
@@ -27,28 +27,20 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 30, top: 20),
                   child: Text(
                     'Username surname',
                     style: TextStyle(fontSize: 24),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  child: Text(
-                    'user-email@email.com',
-                    style: TextStyle(fontSize: 16),
                   ),
                 ),
               ],
             ),
             Column(
               children: [
-                CommonWidget(Icons.person, 'Account'),
-                CommonWidget(Icons.notifications, 'Notification'),
-                CommonWidget(Icons.remove_red_eye, 'Appearance'),
-                CommonWidget(Icons.shield_rounded, 'Privacy and Security'),
-                CommonWidget(Icons.volume_up, 'Sound'),
+                CommonWidget(Icons.person, 'Change Name'),
+                CommonWidget(Icons.email_outlined, 'Change Email'),
+                CommonWidget(Icons.password_rounded, 'Change Password'),
+                CommonWidget(Icons.photo_camera, 'Change Profile Picture'),
                 LogoutButton(),
               ],
             )
