@@ -1,25 +1,35 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:health_ai/utils/routes.dart';
+import 'package:http/http.dart' as http;
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  bool isLogin = true;
-
-  void handleChange() {
-    setState(() {
-      isLogin = !isLogin;
-    });
-  }
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
   final emailEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
-  final nameEditingController = TextEditingController();
+
+  Future SignIn() async {
+    //encode in base64
+    final String email = emailEditingController.text;
+    final String password = passwordEditingController.text;
+    final String credentials = base64.encode(utf8.encode('$email:$password'));
+    final Uri uri = Uri.parse(
+        'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/login');
+    var request = http.Request('POST', uri);
+
+    final Map<String, String> headers = {
+      'Authorization': 'Basic $credentials',
+      'Content-Type': 'application/json',
+    };
+
+    final http.Response response = await http.post(uri, headers: headers);
+    final authorizationHeaderValue = response.headers['authorization'];
+    print("hiii " + authorizationHeaderValue.toString());
+    print(response.headers.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 margin: EdgeInsets.all(14),
                 child: Text(
-                  isLogin ? 'Login' : 'Sign Up',
+                  "Login",
                   style: TextStyle(
                     fontSize: 40,
                     color: Color(0xff432C81),
@@ -52,20 +62,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 280,
                 child: Image.asset('assets/images/login1.png'),
               ),
-              if (!isLogin)
-                Container(
-                  margin: EdgeInsets.only(top: 8, left: 8, right: 8),
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: TextField(
-                    controller: nameEditingController,
-                    decoration: InputDecoration.collapsed(
-                      hintText: 'Full Name',
-                    ),
-                  ),
-                ),
               Container(
                 margin: EdgeInsets.only(top: 8, left: 8, right: 8),
                 padding: EdgeInsets.all(15),
@@ -92,21 +88,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              if (isLogin)
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 8),
-                  width: double.infinity,
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
-                    onPressed: null,
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Color(0xff432C81),
-                      ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 8),
+                width: double.infinity,
+                alignment: Alignment.bottomRight,
+                child: TextButton(
+                  onPressed: null,
+                  child: Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                      color: Color(0xff432C81),
                     ),
                   ),
                 ),
+              ),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.all(8),
@@ -114,25 +109,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xff432C81),
                   ),
-                  onPressed: () {},
-                  child: Text(isLogin ? 'Login' : 'Sign Up'),
+                  onPressed: () {
+                    SignIn();
+
+                    Navigator.pushNamed(context, MyRoutes.mainPage);
+                  },
+                  child: Text('Login'),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    isLogin
-                        ? 'Don\'t have an account?'
-                        : 'Already Have an account?',
+                    'Don\'t have an account?',
                     style: TextStyle(
                       color: Color(0xff432C81),
                     ),
                   ),
                   TextButton(
-                    onPressed: handleChange,
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.signUp);
+                    },
                     child: Text(
-                      isLogin ? 'Sign Up' : 'Login',
+                      'Sign Up',
                       style: TextStyle(
                         color: Color(0xff432C81),
                       ),
