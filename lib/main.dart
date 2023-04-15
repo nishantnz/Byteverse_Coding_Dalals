@@ -4,6 +4,7 @@ import 'package:health_ai/Screens/doctor/dashboard.dart';
 import 'package:health_ai/Screens/login_screen.dart';
 import 'package:health_ai/Screens/doctor/mainPage.dart';
 import 'package:health_ai/Screens/on_boardingpage.dart';
+import 'package:health_ai/Screens/profile_screen.dart';
 
 import 'package:health_ai/Screens/sign_up.dart';
 import 'package:health_ai/utils/routes.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           MyRoutes.doctorOrPatient: (context) => DoctorOrPatient(),
           MyRoutes.mainPage: (context) => MainPage(),
           MyRoutes.signUp: (context) => SignUp(),
+          MyRoutes.profile: (context) => ProfilePage(),
         });
   }
 }

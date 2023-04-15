@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:health_ai/utils/routes.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -41,7 +42,15 @@ class SettingsPage extends StatelessWidget {
             ),
             Column(
               children: [
-                CommonWidget(Icons.person, 'Account'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, MyRoutes.profile);
+                  },
+                  child: InkWell(
+                    splashColor: Colors.blue,
+                    child: CommonWidget(Icons.person, 'Account'),
+                  ),
+                ),
                 CommonWidget(Icons.notifications, 'Notification'),
                 CommonWidget(Icons.remove_red_eye, 'Appearance'),
                 CommonWidget(Icons.shield_rounded, 'Privacy and Security'),
