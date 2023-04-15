@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+passlib
+pymysql
+sqlalchemy
+python-multipart
+pyjwt
+tensorflow
+numpy
+pandas
+tensorflow_hub
