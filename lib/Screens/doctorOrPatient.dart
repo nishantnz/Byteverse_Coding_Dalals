@@ -1,6 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:health_ai/utils/routes.dart';
 
 class DoctorOrPatient extends StatelessWidget {
@@ -31,7 +30,7 @@ class DoctorOrPatient extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, MyRoutes.loginPage);
+                    Navigator.pushNamed(context, MyRoutes.docloginPage);
                   },
                   icon: Image.asset(
                     "assets/images/doc_logo.png",
@@ -59,7 +58,7 @@ class DoctorOrPatient extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, MyRoutes.loginPage);
+                    Navigator.pushNamed(context, MyRoutes.patientLogin);
                   },
                   icon: Image.asset(
                     "assets/images/patient.png",

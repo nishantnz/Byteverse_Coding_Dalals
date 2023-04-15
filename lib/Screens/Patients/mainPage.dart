@@ -4,14 +4,14 @@ import 'package:health_ai/Screens/Patients/dashboard.dart';
 import 'package:health_ai/Screens/Patients/patients_handling.dart';
 import 'package:health_ai/Screens/settings_screen.dart';
 
-class MainPage extends StatefulWidget {
-  MainPage({super.key});
+class PatientMainPage extends StatefulWidget {
+  PatientMainPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<PatientMainPage> createState() => _PatientMainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _PatientMainPageState extends State<PatientMainPage> {
   List pages = const [
     PatientDashboard(),
     PatientsHistory(),

@@ -1,11 +1,14 @@
 class MyRoutes {
-  static String loginPage = "/login";
+  static String docloginPage = "/doclogin";
   static String dashboard = "/dashBoard";
   static String onBoarding = "/onBoarding";
   static String profile = "/profile";
   static String mainPage = "/mainpage";
+  static String patientMainPage = "/patientMainpage";
   static String doctorOrPatient = "/docpat";
-  static String signUp = "/SignUp";
+  static String docSignUp = "/docSignUp";
+  static String patientSignUp = "/patientSignUp";
+  static String patientLogin = "/patientLogin";
   static String patientDashboard = "/patientDashboard";
   static String patientHistory = "/patientHistory";
 }

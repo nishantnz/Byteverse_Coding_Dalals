@@ -1,35 +1,40 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:health_ai/utils/routes.dart';
 import 'package:http/http.dart' as http;
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class DoctorSignUp extends StatelessWidget {
+  DoctorSignUp({super.key});
+
+  Future SignIn() async {
+    var headers = {'Content-Type': 'application/json'};
+    var request = http.Request(
+      'POST',
+      Uri.parse(
+          'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/register'),
+    );
+    request.body = json.encode({
+      "email": emailEditingController.text,
+      "password": passwordEditingController.text
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+      //print the response text
+      print("YOYOYO");
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
 
   final emailEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
-
-  Future SignIn() async {
-    //encode in base64
-    final String email = emailEditingController.text;
-    final String password = passwordEditingController.text;
-    final String credentials = base64.encode(utf8.encode('$email:$password'));
-    final Uri uri = Uri.parse(
-        'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/login');
-    var request = http.Request('POST', uri);
-
-    final Map<String, String> headers = {
-      'Authorization': 'Basic $credentials',
-      'Content-Type': 'application/json',
-    };
-
-    final http.Response response = await http.post(uri, headers: headers);
-    final authorizationHeaderValue =
-        'Bearer ' + response.body.substring(47, response.body.length - 2);
-    // print(authorizationHeaderValue);
-    // print(response.body.toString());
-  }
+  final nameEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,7 @@ class LoginScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(14),
                 child: Text(
-                  "Login",
+                  "Doctor Sign Up",
                   style: TextStyle(
                     fontSize: 40,
                     color: Color(0xff432C81),
@@ -61,6 +66,19 @@ class LoginScreen extends StatelessWidget {
                 height: 327,
                 width: 280,
                 child: Image.asset('assets/images/login1.png'),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 8, left: 8, right: 8),
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                ),
+                child: TextField(
+                  controller: nameEditingController,
+                  decoration: InputDecoration.collapsed(
+                    hintText: 'Full Name',
+                  ),
+                ),
               ),
               Container(
                 margin: EdgeInsets.only(top: 8, left: 8, right: 8),
@@ -89,20 +107,6 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
-                width: double.infinity,
-                alignment: Alignment.bottomRight,
-                child: TextButton(
-                  onPressed: null,
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      color: Color(0xff432C81),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
                 width: double.infinity,
                 margin: EdgeInsets.all(8),
                 child: ElevatedButton(
@@ -114,24 +118,24 @@ class LoginScreen extends StatelessWidget {
 
                     Navigator.pushNamed(context, MyRoutes.mainPage);
                   },
-                  child: Text('Login'),
+                  child: Text('Sign Up'),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account?',
+                    'Already Have an account?',
                     style: TextStyle(
                       color: Color(0xff432C81),
                     ),
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, MyRoutes.signUp);
+                      Navigator.pushNamed(context, MyRoutes.docloginPage);
                     },
                     child: Text(
-                      'Sign Up',
+                      'Login',
                       style: TextStyle(
                         color: Color(0xff432C81),
                       ),
