@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:health_ai/Screens/doctorOrPatient.dart';
+import 'package:health_ai/Screens/homepage.dart';
 import 'package:health_ai/Screens/login_screen.dart';
 import 'package:health_ai/Screens/on_boardingpage.dart';
+import 'package:health_ai/utils/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Health Ai',
-      home: LoginScreen(),
-    );
+        title: 'Health Ai',
+        initialRoute: MyRoutes.onBoarding,
+        routes: {
+          MyRoutes.onBoarding: (context) => OnBoarding(),
+          MyRoutes.loginPage: (context) => LoginScreen(),
+          MyRoutes.homePage: (context) => HomePage(),
+          MyRoutes.doctorOrPatient: (context) => DoctorOrPatient(),
+        });
   }
 }
