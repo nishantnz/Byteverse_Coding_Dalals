@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_ai/Screens/login_screen.dart';
 import 'package:health_ai/Screens/on_boardingpage.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Health Ai',
-      home: OnBoarding(),
+      home: LoginScreen(),
     );
   }
 }
