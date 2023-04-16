@@ -12,4 +12,5 @@ class MyRoutes {
   static String patientDashboard = "/patientDashboard";
   static String patientHistory = "/patientHistory";
   static String patientDetailedReportScreen = "/patientdetReportScreen";
+  static String getPatientData = "/patientdata";
 }
