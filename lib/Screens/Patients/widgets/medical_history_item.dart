@@ -5,8 +5,17 @@ import 'package:health_ai/utils/routes.dart';
 class MedicalHistoryItem extends StatelessWidget {
   final day;
   final report;
+  final id;
+  final image;
+  final patientId;
 
-  MedicalHistoryItem(this.day, this.report);
+  MedicalHistoryItem(
+    this.day,
+    this.report,
+    this.id,
+    this.image,
+    this.patientId,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +23,12 @@ class MedicalHistoryItem extends StatelessWidget {
       height: 100,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(MyRoutes.patientDetailedReportScreen);
+          Navigator.of(context).pushNamed(MyRoutes.patientDetailedReportScreen, arguments: {
+            'id': id.toString(),
+            'img': image.toString(),
+            'disease': report.toString(),
+            'patientId': patientId.toString(),
+          });
         },
         child: Container(
           margin: EdgeInsets.all(4),
