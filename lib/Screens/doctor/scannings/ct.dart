@@ -15,8 +15,6 @@ class CTDoc extends StatefulWidget {
 }
 
 class _CTDocState extends State<CTDoc> {
-  String dropdownValueScan = 'Xray';
-  String dropdownValueOrgan = 'Chest';
   String selectedImagePath = "";
   var resJson;
   var resultOfPrediction;
@@ -34,7 +32,7 @@ class _CTDocState extends State<CTDoc> {
   Future uploadImage(File imageFile) async {
     var headers = {
       'Cookie':
-          'Authorization="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjU0MzYyfQ.FFIFeUVvMbKlQFrHzNEKG0eMwC2zwgs0WTwhszHO80U"'
+          'Authorization="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNzE0NDc2fQ.zNTRtSH-ZkV5BZr-dfkVYivHcg2T3bu69NQ96H-3JyE"'
     };
 
     var request = http.MultipartRequest(
