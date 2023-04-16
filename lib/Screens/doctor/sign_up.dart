@@ -13,11 +13,13 @@ class DoctorSignUp extends StatelessWidget {
     var request = http.Request(
       'POST',
       Uri.parse(
-          'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/register'),
+          'http://59e8-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/register'),
     );
     request.body = json.encode({
       "email": emailEditingController.text,
-      "password": passwordEditingController.text
+      "password": passwordEditingController.text,
+      "name": nameEditingController.text,
+      "role": "Doctor"
     });
     request.headers.addAll(headers);
 
@@ -33,7 +35,9 @@ class DoctorSignUp extends StatelessWidget {
   }
 
   final emailEditingController = TextEditingController();
+
   final passwordEditingController = TextEditingController();
+
   final nameEditingController = TextEditingController();
 
   @override

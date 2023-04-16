@@ -16,8 +16,10 @@ class PatientSignUp extends StatelessWidget {
           'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/register'),
     );
     request.body = json.encode({
+      "name": nameEditingController.text,
       "email": emailEditingController.text,
-      "password": passwordEditingController.text
+      "password": passwordEditingController.text,
+      "role": "Patient"
     });
     request.headers.addAll(headers);
 
