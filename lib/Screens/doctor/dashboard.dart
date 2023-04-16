@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:health_ai/utils/routes.dart';
 import 'package:lottie/lottie.dart';
 import 'package:http/http.dart' as http;
 
@@ -51,18 +52,18 @@ class _DashboardState extends State<Dashboard> {
     List<Map> users = [
       {
         "name": "Pavan Gole",
-        "subtitle": "View your patients lab results",
-        "icon": "assets/files/lab_results.json",
+        "subtitle": "View your patients lab Analysis",
+        "icon": "assets/files/lab_result.json",
       },
       {
         "name": "Arshad Mehta",
-        "subtitle": "View your patients",
-        "icon": "assets/files/patients.json",
+        "subtitle": "View your patients lab Analysis",
+        "icon": "assets/files/lab_result.json",
       },
       {
-        "name": "Prathamesh gandu",
-        "subtitle": "View your settings",
-        "icon": "assets/files/settings.json",
+        "name": "Prathamesh bro",
+        "subtitle": "View your patients lab Analysis",
+        "icon": "assets/files/lab_result.json",
       },
     ];
     return Scaffold(
@@ -78,11 +79,13 @@ class _DashboardState extends State<Dashboard> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: Text("👋 Hi $updateName",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  child: Text(
+                    "👋 Hi $updateName",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Container(
@@ -99,26 +102,51 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(
             height: 20,
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Text(
+                "Check the Patient's Lab Scans/Results",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              ),
+            ),
+          ),
           Expanded(
             child: ListView.builder(
                 itemCount: users.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(
-                      users[index]['name'],
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, MyRoutes.doctorPatientLabAnalysis);
+                    },
+                    child: Card(
+                      elevation: 20,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: ListTile(
+                        title: Text(
+                          users[index]['name'],
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text(
+                          users[index]['subtitle'],
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        trailing: Lottie.asset(
+                          users[index]['icon'],
+                          width: 50,
+                          height: 50,
+                        ),
                       ),
                     ),
-                    subtitle: Text(
-                      users[index]['subtitle'],
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    //trailing: users[index]['icon'],
                   );
                 }),
           )
