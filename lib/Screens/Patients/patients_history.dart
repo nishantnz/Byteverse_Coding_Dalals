@@ -81,7 +81,7 @@ class PatientsHistory extends StatelessWidget {
                 right: 10,
               ),
               height: dummyData.length * 100 + 5.0 > 450
-                  ? 5.3 * 100 + 5.0
+                  ? 3.7 * 100 + 5.0
                   : dummyData.length * 100 + 5.0,
               child: ListView.builder(
                 itemBuilder: (context, index) => MedicalHistoryItem(
@@ -94,7 +94,9 @@ class PatientsHistory extends StatelessWidget {
             Center(
               child: FloatingActionButton(
                 backgroundColor: Colors.deepPurpleAccent[100],
-                onPressed: null,
+                onPressed: () {
+                  Navigator.pushNamed(context, MyRoutes.scanningReportPateint);
+                },
                 child: Icon(Icons.add),
               ),
             ),
