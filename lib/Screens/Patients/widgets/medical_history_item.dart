@@ -11,38 +11,44 @@ class MedicalHistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75,
+      height: 100,
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).pushNamed(MyRoutes.patientDetailedReportScreen);
         },
-        child: Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
+        child: Container(
+          margin: EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: Color(0x28432C81),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 5, bottom: 2.5, left: 10),
-                  child: Text(
-                    day,
-                    style: TextStyle(fontSize: 20),
+          width: double.infinity,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 5, bottom: 2.5, left: 10),
+                child: Text(
+                  day,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Color(0xff432C81),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 2.5, bottom: 5, left: 10),
-                  child: Text(
-                    report,
-                    style: TextStyle(fontSize: 20),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 2.5, bottom: 5, left: 10),
+                child: Text(
+                  report,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Color(0xff432C81),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

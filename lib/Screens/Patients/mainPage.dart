@@ -18,7 +18,7 @@ class _PatientMainPageState extends State<PatientMainPage> {
     SettingsPage(),
   ];
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _PatientMainPageState extends State<PatientMainPage> {
                 ),
                 GButton(
                   icon: Icons.people_alt_sharp,
-                  text: 'Patients',
+                  text: 'History',
                   textColor: Colors.black,
                   iconColor: Colors.black,
                 ),

@@ -54,7 +54,7 @@ class PatientsHistory extends StatelessWidget {
           children: [
             Container(
               // margin: EdgeInsets.all(10),
-              margin: EdgeInsets.only(top: 50, right: 10, left: 10),
+              margin: EdgeInsets.only(top: 60, right: 10, left: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color(0x44432C81),
@@ -74,13 +74,15 @@ class PatientsHistory extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(
-                vertical: 30,
-                horizontal: 10,
+              margin: EdgeInsets.only(
+                top: 15,
+                bottom: 10,
+                left: 10,
+                right: 10,
               ),
-              height: dummyData.length * 75 + 5.0 > 450
-                  ? 6.4 * 75 + 5.0
-                  : dummyData.length * 75 + 5.0,
+              height: dummyData.length * 100 + 5.0 > 450
+                  ? 5.3 * 100 + 5.0
+                  : dummyData.length * 100 + 5.0,
               child: ListView.builder(
                 itemBuilder: (context, index) => MedicalHistoryItem(
                   dummyData[index]["day"],
