@@ -11,6 +11,7 @@ import 'package:health_ai/Screens/Patients/sign_up.dart';
 import 'package:health_ai/Screens/doctor/login_screen.dart';
 import 'package:health_ai/Screens/doctor/patientLabAnalysis.dart';
 import 'package:health_ai/Screens/doctor/report_image_doctor.dart';
+import 'package:health_ai/Screens/doctor/schedulingPatients.dart';
 import 'package:health_ai/Screens/doctor/sign_up.dart';
 import 'package:health_ai/Screens/doctorOrPatient.dart';
 import 'package:health_ai/Screens/doctor/dashboard.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Health Ai',
-        initialRoute: MyRoutes.mainPage,
+        initialRoute: MyRoutes.scheduling_patients,
         routes: {
           MyRoutes.onBoarding: (context) => OnBoarding(),
           MyRoutes.docloginPage: (context) => DoctorLoginScreen(),
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           MyRoutes.patientLogin: (context) => PatientLoginScreen(),
           MyRoutes.patientSignUp: (context) => PatientSignUp(),
           MyRoutes.scanningReportPateint: (context) => ScanningReport(),
+          MyRoutes.scheduling_patients: (context) => SchedulingPatients(),
           MyRoutes.reportImageDoctor: (context) => ReportImageDoctor(),
           MyRoutes.doctorPatientLabAnalysis: (context) =>
               DoctorPatientLabAnalysis(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:health_ai/utils/routes.dart';
 import 'package:lottie/lottie.dart';
 
 class PatientsHandling extends StatefulWidget {
@@ -72,6 +73,8 @@ class _PatientsHandlingState extends State<PatientsHandling> {
                         setState(() {
                           animationRepeat = false;
                         });
+                        Navigator.pushNamed(
+                            context, MyRoutes.scheduling_patients);
                       },
                       onTapDown: (details) {
                         setState(() {
