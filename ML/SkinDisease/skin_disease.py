@@ -9,7 +9,7 @@ labels = pd.read_csv('labels.csv')
 unique_labels = np.unique(labels["labels"])
 
 # Define image size
-IMG_SIZE = 224
+IMG_SIZE = 480
 
 # Create a function for preprocessing images
 def process_image(image_path):

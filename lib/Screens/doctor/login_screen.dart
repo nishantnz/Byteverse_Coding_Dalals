@@ -15,19 +15,17 @@ class DoctorLoginScreen extends StatelessWidget {
     final String email = emailEditingController.text;
     final String password = passwordEditingController.text;
     final String credentials = base64.encode(utf8.encode('$email:$password'));
-    final Uri uri = Uri.parse(
-        'http://59e8-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/login');
+    final Uri uri =
+        Uri.parse('http://healthai.koreacentral.cloudapp.azure.com/auth/login');
     var request = http.Request('POST', uri);
 
     final Map<String, String> headers = {
-      'Authorization': 'Basic $credentials',
+      'Authorization': 'Basic c2F2YW5AZ21haWwuY29tOnBhdmFu',
       'Content-Type': 'application/json',
     };
 
     final http.Response response = await http.post(uri, headers: headers);
-    final authorizationHeaderValue =
-        'Bearer ' + response.body.substring(47, response.body.length - 2);
-    print(authorizationHeaderValue);
+
     print(response.body.toString());
   }
 

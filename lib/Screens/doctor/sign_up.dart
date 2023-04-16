@@ -9,11 +9,14 @@ class DoctorSignUp extends StatelessWidget {
   DoctorSignUp({super.key});
 
   Future SignIn() async {
-    var headers = {'Content-Type': 'application/json'};
+    final Map<String, String> headers = {
+      'Authorization': 'Basic cGF2YW46cGF2YW4=',
+      'Content-Type': 'application/json',
+    };
     var request = http.Request(
       'POST',
       Uri.parse(
-          'http://59e8-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/register'),
+          'http://healthai.koreacentral.cloudapp.azure.com/auth/register'),
     );
     request.body = json.encode({
       "email": emailEditingController.text,
@@ -28,7 +31,6 @@ class DoctorSignUp extends StatelessWidget {
     if (response.statusCode == 200) {
       print(await response.stream.bytesToString());
       //print the response text
-      print("YOYOYO");
     } else {
       print(response.reasonPhrase);
     }

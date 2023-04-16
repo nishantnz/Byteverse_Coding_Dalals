@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: 
-  image_picker: 
+  
   provider: 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -40,6 +40,8 @@ dependencies:
  
   google_nav_bar: ^5.0.6
   lottie: ^2.3.2
+  image_picker: ^0.8.7+3
+  intl: ^0.18.0
 
 
 dev_dependencies:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:health_ai/utils/routes.dart';
 import 'package:lottie/lottie.dart';
 
 class PatientsHandling extends StatefulWidget {
@@ -15,10 +16,11 @@ class _PatientsHandlingState extends State<PatientsHandling> {
   Widget build(BuildContext context) {
     Map<String, String> userdata = {
       "Scheduling Patients": "assets/files/patient_hist.json",
-      "Patients History": "assets/files/scheduling_patients.json",
+      //  "Patients History": "assets/files/scheduling_patients.json",
+      "Scan Xray Images": "assets/files/xrayscan.json",
+      "Scan CT Images": "assets/files/ctscan.json",
+      "Scan MRI Images": "assets/files/mri.json",
     };
-
-    bool animationRepeat = false;
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -33,9 +35,9 @@ class _PatientsHandlingState extends State<PatientsHandling> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: const Text("Review Your Patients",
+                  child: Text("Review Your Patients",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: MediaQuery.of(context).size.width / 15,
                         fontWeight: FontWeight.bold,
                       )),
                 ),
@@ -69,14 +71,19 @@ class _PatientsHandlingState extends State<PatientsHandling> {
                     String value = userdata.values.elementAt(index);
                     return GestureDetector(
                       onTap: () {
-                        setState(() {
-                          animationRepeat = false;
-                        });
-                      },
-                      onTapDown: (details) {
-                        setState(() {
-                          animationRepeat = true;
-                        });
+                        if (userdata.keys.elementAt(index) ==
+                            "Scan Xray Images")
+                          Navigator.pushNamed(context, MyRoutes.xraydoc);
+                        else if (userdata.keys.elementAt(index) ==
+                            "Scan CT Images")
+                          Navigator.pushNamed(context, MyRoutes.ctdoc);
+                        else if (userdata.keys.elementAt(index) ==
+                            "Scan MRI Images")
+                          Navigator.pushNamed(context, MyRoutes.mridoc);
+                        else if (userdata.keys.elementAt(index) ==
+                            "Scheduling Patients")
+                          Navigator.pushNamed(
+                              context, MyRoutes.scheduling_patients);
                       },
                       child: GridTile(
                         child: Card(
@@ -91,7 +98,7 @@ class _PatientsHandlingState extends State<PatientsHandling> {
                                 width: 150,
                                 height: 150,
                                 child: Lottie.asset(value,
-                                    repeat: animationRepeat,
+                                    repeat: false,
                                     animate: true,
                                     fit: BoxFit.contain),
                               ),
