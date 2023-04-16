@@ -94,7 +94,7 @@ class PatientsHistory extends StatelessWidget {
             Center(
               child: FloatingActionButton(
                 backgroundColor: Colors.deepPurpleAccent[100],
-                onPressed: null,
+                onPressed: () => Navigator.of(context).pushNamed(MyRoutes.addPatientDisease),
                 child: Icon(Icons.add),
               ),
             ),

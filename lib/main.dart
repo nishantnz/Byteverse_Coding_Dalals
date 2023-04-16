@@ -3,6 +3,7 @@ import 'package:health_ai/Screens/Patients/dashboard.dart';
 import 'package:health_ai/Screens/Patients/detailed_report_screen.dart';
 import 'package:health_ai/Screens/Patients/login_screen.dart';
 import 'package:health_ai/Screens/Patients/mainPage.dart';
+import 'package:health_ai/Screens/Patients/new_disease.dart';
 import 'package:health_ai/Screens/Patients/patient_data.dart';
 import 'package:health_ai/Screens/Patients/patients_history.dart';
 import 'package:health_ai/Screens/Patients/sign_up.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
           MyRoutes.patientDetailedReportScreen: (context) =>
               DetailedReportScreen(),
           MyRoutes.getPatientData: (context) => GetPatientData(),
+          MyRoutes.addPatientDisease: (context) => addPatientDisease(),
         });
   }
 }

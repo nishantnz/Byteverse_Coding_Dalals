@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:health_ai/utils/routes.dart';
 import 'package:image_picker/image_picker.dart';
 
-class GetPatientData extends StatelessWidget {
+class addPatientDisease extends StatelessWidget {
   final ageEditingController = TextEditingController();
   final addressEditingController = TextEditingController();
 
