@@ -67,6 +67,12 @@ class _CTDocState extends State<CTDoc> {
               child: const Text("Upload Image"),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              "results",
+            ),
+          ),
         ],
       ),
     ));

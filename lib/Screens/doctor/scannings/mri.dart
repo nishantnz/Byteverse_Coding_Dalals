@@ -67,6 +67,12 @@ class _MRIDocState extends State<MRIDoc> {
               child: const Text("Upload Image"),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              "results",
+            ),
+          ),
         ],
       ),
     ));
