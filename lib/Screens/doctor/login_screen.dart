@@ -16,7 +16,7 @@ class DoctorLoginScreen extends StatelessWidget {
     final String password = passwordEditingController.text;
     final String credentials = base64.encode(utf8.encode('$email:$password'));
     final Uri uri = Uri.parse(
-        'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/login');
+        'http://59e8-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/login');
     var request = http.Request('POST', uri);
 
     final Map<String, String> headers = {
@@ -27,8 +27,8 @@ class DoctorLoginScreen extends StatelessWidget {
     final http.Response response = await http.post(uri, headers: headers);
     final authorizationHeaderValue =
         'Bearer ' + response.body.substring(47, response.body.length - 2);
-    // print(authorizationHeaderValue);
-    // print(response.body.toString());
+    print(authorizationHeaderValue);
+    print(response.body.toString());
   }
 
   @override

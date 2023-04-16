@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
     SettingsPage(),
   ];
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +40,8 @@ class _MainPageState extends State<MainPage> {
               padding: EdgeInsets.all(20),
               tabs: const [
                 GButton(
-                  icon: Icons.dashboard_sharp,
-                  text: 'Dashboard',
+                  icon: Icons.local_hospital_sharp,
+                  text: 'Lab Results',
                   textColor: Colors.black,
                   iconColor: Colors.black,
                 ),
