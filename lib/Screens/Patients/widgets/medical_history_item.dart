@@ -4,6 +4,7 @@ import 'package:health_ai/utils/routes.dart';
 
 class MedicalHistoryItem extends StatelessWidget {
   final day;
+  final scan_type;
   final report;
   final id;
   final image;
@@ -11,10 +12,11 @@ class MedicalHistoryItem extends StatelessWidget {
 
   MedicalHistoryItem(
     this.day,
-    this.report,
+    this.scan_type,
     this.id,
     this.image,
     this.patientId,
+    this.report,
   );
 
   @override
@@ -23,11 +25,13 @@ class MedicalHistoryItem extends StatelessWidget {
       height: 100,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(MyRoutes.patientDetailedReportScreen, arguments: {
+          Navigator.of(context)
+              .pushNamed(MyRoutes.patientDetailedReportScreen, arguments: {
             'id': id.toString(),
             'img': image.toString(),
             'disease': report.toString(),
             'patientId': patientId.toString(),
+            'scan_type': scan_type.toString(),
           });
         },
         child: Container(
@@ -55,7 +59,7 @@ class MedicalHistoryItem extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 2.5, bottom: 5, left: 10),
                 child: Text(
-                  report,
+                  scan_type,
                   style: TextStyle(
                     fontSize: 20,
                     color: Color(0xff432C81),

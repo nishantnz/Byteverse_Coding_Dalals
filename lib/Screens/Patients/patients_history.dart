@@ -21,7 +21,7 @@ class _PatientsHistoryState extends State<PatientsHistory> {
 
     final Map<String, String> headers = {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjUyNDU5fQ.5MrVMnxTF4mbEAvsdMGkcM6EnLPVtuhAHJ0SMLuQe1o',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjU0MzYyfQ.FFIFeUVvMbKlQFrHzNEKG0eMwC2zwgs0WTwhszHO80U',
       'Content-Type': 'application/json',
     };
 
@@ -83,10 +83,11 @@ class _PatientsHistoryState extends State<PatientsHistory> {
               child: ListView.builder(
                 itemBuilder: (context, index) => MedicalHistoryItem(
                   dummyData[index]["date"],
-                  dummyData[index]["disease"],
+                  dummyData[index]["scan_type"],
                   dummyData[index]["id"],
                   dummyData[index]["image"],
                   dummyData[index]["patient_id"],
+                  dummyData[index]["disease"],
                 ),
                 itemCount: dummyData.length,
               ),

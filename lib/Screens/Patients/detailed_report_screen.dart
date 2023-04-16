@@ -19,6 +19,7 @@ class _DoctorPatientLabAnalysisState extends State<DetailedReportScreen> {
     String disease = data['disease']!;
     String image = data['img']!;
     String pid = data['patientId']!;
+    String stype = data['scan_type']!;
     String path =
         'http://9886-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/storage/$pid/processed/$image';
     return SafeArea(
@@ -55,7 +56,7 @@ class _DoctorPatientLabAnalysisState extends State<DetailedReportScreen> {
                   height: 10,
                 ),
                 Container(
-                  child: Text("Type of Scan : Xray"),
+                  child: Text("Type of Scan : $stype"),
                 ),
                 SizedBox(
                   height: 10,

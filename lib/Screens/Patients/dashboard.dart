@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'dart:convert';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:health_ai/utils/routes.dart';
 import 'package:http/http.dart' as http;
 
 class PatientDashboard extends StatefulWidget {
@@ -31,7 +32,7 @@ class _DashboardState extends State<PatientDashboard> {
 
     final Map<String, String> headers = {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjQ2OTc5fQ.aMyuUtWMTb1s78ihn44LTd5bXaL1OH-6JFe6mdncEZA',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOM0daQVpNUU0wIiwiZXhwIjoxNjgxNjEzOTQ5fQ.iJV7aoJljZnpXof3YC3ut6tj6oVg4C8g2os1DCYxJ1I',
       'Content-Type': 'application/json',
     };
 
@@ -47,19 +48,19 @@ class _DashboardState extends State<PatientDashboard> {
   Widget build(BuildContext context) {
     List<Map> users = [
       {
-        "name": "Arshad Mehta",
-        "subtitle": "View your patients",
-        "icon": "assets/files/patients.json",
-      },
-      {
         "name": "Pavan Gole",
-        "subtitle": "View your patients lab results",
-        "icon": "assets/files/lab_results.json",
+        "subtitle": "View your patients lab Analysis",
+        "icon": "assets/files/lab_result.json",
       },
       {
-        "name": "Prathamesh mast aadmi",
-        "subtitle": "View your settings",
-        "icon": "assets/files/settings.json",
+        "name": "Arshad Mehta",
+        "subtitle": "View your patients lab Analysis",
+        "icon": "assets/files/lab_result.json",
+      },
+      {
+        "name": "Prathamesh bro",
+        "subtitle": "View your patients lab Analysis",
+        "icon": "assets/files/lab_result.json",
       },
     ];
     return Scaffold(
@@ -75,11 +76,13 @@ class _DashboardState extends State<PatientDashboard> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: Text("👋 Hi $updateName",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  child: Text(
+                    "👋 Hi $updateName",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Container(
@@ -96,30 +99,75 @@ class _DashboardState extends State<PatientDashboard> {
           SizedBox(
             height: 20,
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(
-                      users[index]['name'],
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      users[index]['subtitle'],
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    //trailing: users[index]['icon'],
-                  );
-                }),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Text(
+                "Welcome",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Column(
+            children: [
+              GestureDetector(
+                onTap: () => Navigator.of(context)
+                    .pushNamed(MyRoutes.scanningReportPateint),
+                child: CommonWidget(Icons.search, 'Scan for disease'),
+              ),
+              GestureDetector(
+                onTap: () =>
+                    Navigator.of(context).pushNamed(MyRoutes.patientHistory),
+                child: CommonWidget(Icons.mail, 'See recent reports'),
+              ),
+              CommonWidget(Icons.phone, 'Contact Doctor'),
+            ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class CommonWidget extends StatelessWidget {
+  final icon;
+  final text;
+
+  CommonWidget(this.icon, this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 6,
+      margin: EdgeInsets.all(6),
+      child: Container(
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    icon,
+                    size: 24,
+                  ),
+                ),
+                Text(
+                  text,
+                  style: TextStyle(fontSize: 24),
+                ),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios_sharp),
+          ],
+        ),
       ),
     );
   }
