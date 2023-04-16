@@ -16,7 +16,7 @@ class _PatientsHandlingState extends State<PatientsHandling> {
   Widget build(BuildContext context) {
     Map<String, String> userdata = {
       "Scheduling Patients": "assets/files/patient_hist.json",
-      "Patients History": "assets/files/scheduling_patients.json",
+      //  "Patients History": "assets/files/scheduling_patients.json",
       "Scan Xray Images": "assets/files/xrayscan.json",
       "Scan CT Images": "assets/files/ctscan.json",
       "Scan MRI Images": "assets/files/mri.json",
@@ -35,9 +35,9 @@ class _PatientsHandlingState extends State<PatientsHandling> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: const Text("Review Your Patients",
+                  child: Text("Review Your Patients",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: MediaQuery.of(context).size.width / 15,
                         fontWeight: FontWeight.bold,
                       )),
                 ),
@@ -71,8 +71,19 @@ class _PatientsHandlingState extends State<PatientsHandling> {
                     String value = userdata.values.elementAt(index);
                     return GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(
-                            context, MyRoutes.scheduling_patients);
+                        if (userdata.keys.elementAt(index) ==
+                            "Scan Xray Images")
+                          Navigator.pushNamed(context, MyRoutes.xraydoc);
+                        else if (userdata.keys.elementAt(index) ==
+                            "Scan CT Images")
+                          Navigator.pushNamed(context, MyRoutes.ctdoc);
+                        else if (userdata.keys.elementAt(index) ==
+                            "Scan MRI Images")
+                          Navigator.pushNamed(context, MyRoutes.mridoc);
+                        else if (userdata.keys.elementAt(index) ==
+                            "Scheduling Patients")
+                          Navigator.pushNamed(
+                              context, MyRoutes.scheduling_patients);
                       },
                       child: GridTile(
                         child: Card(
