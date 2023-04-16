@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_ai/Screens/Patients/dashboard.dart';
+import 'package:health_ai/Screens/Patients/detailed_report_screen.dart';
 import 'package:health_ai/Screens/Patients/login_screen.dart';
 import 'package:health_ai/Screens/Patients/mainPage.dart';
 import 'package:health_ai/Screens/Patients/patients_history.dart';
@@ -40,6 +41,8 @@ class MyApp extends StatelessWidget {
           MyRoutes.patientHistory: (context) => PatientsHistory(),
           MyRoutes.patientLogin: (context) => PatientLoginScreen(),
           MyRoutes.patientSignUp: (context) => PatientSignUp(),
+          MyRoutes.patientDetailedReportScreen: (context) =>
+              DetailedReportScreen(),
         });
   }
 }

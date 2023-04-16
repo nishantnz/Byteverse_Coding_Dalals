@@ -12,7 +12,7 @@ class PatientMainPage extends StatefulWidget {
 }
 
 class _PatientMainPageState extends State<PatientMainPage> {
-  List pages = const [
+  List pages = [
     PatientDashboard(),
     PatientsHistory(),
     SettingsPage(),

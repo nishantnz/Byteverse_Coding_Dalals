@@ -1,22 +1,63 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:health_ai/Screens/Patients/widgets/medical_history_item.dart';
+import 'package:health_ai/utils/routes.dart';
 
 class PatientsHistory extends StatelessWidget {
-  const PatientsHistory({super.key});
+  var dummyData = [
+    {
+      'day': "friday",
+      'report': "no cancer",
+    },
+    {
+      'day': "thursday",
+      'report': "no tumor",
+    },
+    {
+      'day': "wednesday",
+      'report': "no eye disease",
+    },
+    {
+      'day': "monday",
+      'report': "yes cancer",
+    },
+    {
+      'day': "moonday",
+      'report': "yes cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Card(
-              elevation: 2,
-              margin: EdgeInsets.all(10),
-              color: Color(0x18432C81),
-              shape: RoundedRectangleBorder(
+            Container(
+              // margin: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 50, right: 10, left: 10),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
+                color: Color(0x44432C81),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -31,7 +72,30 @@ class PatientsHistory extends StatelessWidget {
                   Image.asset('assets/images/history1.png'),
                 ],
               ),
-            )
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                vertical: 30,
+                horizontal: 10,
+              ),
+              height: dummyData.length * 75 + 5.0 > 450
+                  ? 6.4 * 75 + 5.0
+                  : dummyData.length * 75 + 5.0,
+              child: ListView.builder(
+                itemBuilder: (context, index) => MedicalHistoryItem(
+                  dummyData[index]["day"],
+                  dummyData[index]["report"],
+                ),
+                itemCount: dummyData.length,
+              ),
+            ),
+            Center(
+              child: FloatingActionButton(
+                backgroundColor: Colors.deepPurpleAccent[100],
+                onPressed: null,
+                child: Icon(Icons.add),
+              ),
+            ),
           ],
         ),
       ),
