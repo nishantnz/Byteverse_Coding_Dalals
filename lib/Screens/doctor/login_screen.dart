@@ -4,11 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:health_ai/utils/routes.dart';
 import 'package:http/http.dart' as http;
 
-class DoctorLoginScreen extends StatelessWidget {
+class DoctorLoginScreen extends StatefulWidget {
   DoctorLoginScreen({super.key});
 
+  @override
+  State<DoctorLoginScreen> createState() => _DoctorLoginScreenState();
+}
+
+class _DoctorLoginScreenState extends State<DoctorLoginScreen> {
   final emailEditingController = TextEditingController();
+
   final passwordEditingController = TextEditingController();
+
+  var tok;
 
   Future SignIn() async {
     //encode in base64
@@ -27,6 +35,9 @@ class DoctorLoginScreen extends StatelessWidget {
     final http.Response response = await http.post(uri, headers: headers);
 
     print(response.body.toString());
+    setState(() {
+      tok = jsonDecode(response.body.substring(29, response.body.length - 2));
+    });
   }
 
   @override
@@ -109,8 +120,9 @@ class DoctorLoginScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     SignIn();
-
-                    Navigator.pushNamed(context, MyRoutes.mainPage);
+                    if (tok != null) {
+                      Navigator.pushNamed(context, MyRoutes.mainPage);
+                    }
                   },
                   child: Text('Login'),
                 ),

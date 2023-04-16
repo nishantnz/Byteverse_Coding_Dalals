@@ -103,7 +103,11 @@ class _XrayDocState extends State<XrayDoc> {
                   await uploadImage(File(selectedImagePath));
                 }
               },
-              child: const Text("Upload Image"),
+              child: Text(selectedImagePath.isNotEmpty
+                  ? resultOfPrediction == null
+                      ? "Uploading Image"
+                      : "Select new Image"
+                  : "Select Image"),
             ),
           ),
           Padding(
@@ -115,7 +119,7 @@ class _XrayDocState extends State<XrayDoc> {
                         "Loading...",
                       )
                     : Text(
-                        "The patient has ${resultOfPrediction}",
+                        "The patient has ${resultOfPrediction[0]}",
                       ),
           ),
         ],

@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
@@ -103,7 +101,11 @@ class _MRIDocState extends State<MRIDoc> {
                   await uploadImage(File(selectedImagePath));
                 }
               },
-              child: const Text("Upload Image"),
+              child: Text(selectedImagePath.isNotEmpty
+                  ? resultOfPrediction == null
+                      ? "Uploading Image"
+                      : "Select new Image"
+                  : "Select Image"),
             ),
           ),
           Padding(
@@ -115,7 +117,7 @@ class _MRIDocState extends State<MRIDoc> {
                         "Loading...",
                       )
                     : Text(
-                        "The patient has ${resultOfPrediction}",
+                        "The patient has ${resultOfPrediction[0]}",
                       ),
           ),
         ],
