@@ -17,9 +17,10 @@ class _PatientsHandlingState extends State<PatientsHandling> {
     Map<String, String> userdata = {
       "Scheduling Patients": "assets/files/patient_hist.json",
       "Patients History": "assets/files/scheduling_patients.json",
+      "Scan Xray Images": "assets/files/xrayscan.json",
+      "Scan CT Images": "assets/files/ctscan.json",
+      "Scan MRI Images": "assets/files/mri.json",
     };
-
-    bool animationRepeat = false;
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -70,16 +71,8 @@ class _PatientsHandlingState extends State<PatientsHandling> {
                     String value = userdata.values.elementAt(index);
                     return GestureDetector(
                       onTap: () {
-                        setState(() {
-                          animationRepeat = false;
-                        });
                         Navigator.pushNamed(
                             context, MyRoutes.scheduling_patients);
-                      },
-                      onTapDown: (details) {
-                        setState(() {
-                          animationRepeat = true;
-                        });
                       },
                       child: GridTile(
                         child: Card(
@@ -94,7 +87,7 @@ class _PatientsHandlingState extends State<PatientsHandling> {
                                 width: 150,
                                 height: 150,
                                 child: Lottie.asset(value,
-                                    repeat: animationRepeat,
+                                    repeat: false,
                                     animate: true,
                                     fit: BoxFit.contain),
                               ),
