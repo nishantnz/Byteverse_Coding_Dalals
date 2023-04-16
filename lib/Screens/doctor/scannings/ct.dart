@@ -103,7 +103,11 @@ class _CTDocState extends State<CTDoc> {
                   await uploadImage(File(selectedImagePath));
                 }
               },
-              child: const Text("Upload Image"),
+              child: Text(selectedImagePath.isNotEmpty
+                  ? resultOfPrediction == null
+                      ? "Uploading Image"
+                      : "Select new Image"
+                  : "Select Image"),
             ),
           ),
           Padding(
@@ -111,11 +115,11 @@ class _CTDocState extends State<CTDoc> {
             child: selectedImagePath.isEmpty
                 ? Text("Please upload an image first")
                 : resultOfPrediction == null
-                    ? Text(
+                    ? const Text(
                         "Loading...",
                       )
                     : Text(
-                        "The patient has ${resultOfPrediction}",
+                        "The patient has ${resultOfPrediction[0]}",
                       ),
           ),
         ],

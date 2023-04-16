@@ -13,7 +13,7 @@ class PatientsHistory extends StatefulWidget {
 }
 
 class _PatientsHistoryState extends State<PatientsHistory> {
-  var dummyData;
+  var dummyData = [];
   void getPatientHistory() async {
     final Uri uri = Uri.parse(
         'http://9886-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/users/history');
@@ -21,24 +21,27 @@ class _PatientsHistoryState extends State<PatientsHistory> {
 
     final Map<String, String> headers = {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjQ2OTc5fQ.aMyuUtWMTb1s78ihn44LTd5bXaL1OH-6JFe6mdncEZA',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjU0MzYyfQ.FFIFeUVvMbKlQFrHzNEKG0eMwC2zwgs0WTwhszHO80U',
       'Content-Type': 'application/json',
     };
 
     final http.Response response = await http.post(uri, headers: headers);
     print(response.body);
-    dummyData = jsonDecode(response.body);
-    print(dummyData[0]['image']);
+    setState(() {
+      dummyData = jsonDecode(response.body);
+    });
   }
 
   @override
   void initState() {
-    super.initState();
     getPatientHistory();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print("dummy data: ");
+    print(dummyData);
     return Scaffold(
       body: Container(
         child: Column(
@@ -67,7 +70,7 @@ class _PatientsHistoryState extends State<PatientsHistory> {
                 ],
               ),
             ),
-            /* Container(
+            Container(
               margin: EdgeInsets.only(
                 top: 15,
                 bottom: 10,
@@ -79,13 +82,16 @@ class _PatientsHistoryState extends State<PatientsHistory> {
                   : dummyData.length * 100 + 5.0,
               child: ListView.builder(
                 itemBuilder: (context, index) => MedicalHistoryItem(
-                  dummyData[index]["day"],
-                  dummyData[index]["report"],
+                  dummyData[index]["date"],
+                  dummyData[index]["scan_type"],
+                  dummyData[index]["id"],
+                  dummyData[index]["image"],
+                  dummyData[index]["patient_id"],
+                  dummyData[index]["disease"],
                 ),
-                itemCount: 3,
+                itemCount: dummyData.length,
               ),
             ),
-            */
             Center(
               child: FloatingActionButton(
                 backgroundColor: Colors.deepPurpleAccent[100],
