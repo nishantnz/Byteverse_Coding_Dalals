@@ -118,7 +118,7 @@ class PatientSignUp extends StatelessWidget {
                   onPressed: () {
                     SignIn();
 
-                    Navigator.pushNamed(context, MyRoutes.getPatientData);
+                    // Navigator.pushNamed(context, MyRoutes.getPatientData);
                   },
                   child: Text('Sign Up'),
                 ),

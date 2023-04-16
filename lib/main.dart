@@ -52,8 +52,6 @@ class MyApp extends StatelessWidget {
               DoctorPatientLabAnalysis(),
           MyRoutes.patientDetailedReportScreen: (context) =>
               DetailedReportScreen(),
-          MyRoutes.getPatientData: (context) => GetPatientData(),
-          MyRoutes.addPatientDisease: (context) => addPatientDisease(),
         });
   }
 }
