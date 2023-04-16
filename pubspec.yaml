@@ -39,6 +39,7 @@ dependencies:
  
   google_nav_bar: ^5.0.6
   lottie: ^2.3.2
+  image_picker: ^0.8.7+3
 
 
 dev_dependencies:
