@@ -10,6 +10,8 @@ class PatientLoginScreen extends StatelessWidget {
   final emailEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
 
+  var token;
+
   Future SignIn() async {
     //encode in base64
     final String email = emailEditingController.text;
@@ -29,6 +31,8 @@ class PatientLoginScreen extends StatelessWidget {
         'Bearer ' + response.body.substring(47, response.body.length - 2);
     // print(authorizationHeaderValue);
     // print(response.body.toString());
+    token = authorizationHeaderValue;
+    print(token);
   }
 
   @override

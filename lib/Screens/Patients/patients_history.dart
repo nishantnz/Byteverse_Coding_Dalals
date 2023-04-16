@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:health_ai/Screens/Patients/widgets/medical_history_item.dart';
 import 'package:http/http.dart' as http;
@@ -11,6 +13,7 @@ class PatientsHistory extends StatefulWidget {
 }
 
 class _PatientsHistoryState extends State<PatientsHistory> {
+  var dummyData;
   void getPatientHistory() async {
     final Uri uri = Uri.parse(
         'http://9886-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/users/history');
@@ -18,12 +21,14 @@ class _PatientsHistoryState extends State<PatientsHistory> {
 
     final Map<String, String> headers = {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOM0daQVpNUU0wIiwiZXhwIjoxNjgxNjEzOTQ5fQ.iJV7aoJljZnpXof3YC3ut6tj6oVg4C8g2os1DCYxJ1I',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjQ2OTc5fQ.aMyuUtWMTb1s78ihn44LTd5bXaL1OH-6JFe6mdncEZA',
       'Content-Type': 'application/json',
     };
 
     final http.Response response = await http.post(uri, headers: headers);
     print(response.body);
+    dummyData = jsonDecode(response.body);
+    print(dummyData[0]['image']);
   }
 
   @override
@@ -31,8 +36,6 @@ class _PatientsHistoryState extends State<PatientsHistory> {
     super.initState();
     getPatientHistory();
   }
-
-  var dummyData = [];
 
   @override
   Widget build(BuildContext context) {
@@ -64,24 +67,26 @@ class _PatientsHistoryState extends State<PatientsHistory> {
                 ],
               ),
             ),
-            Container(
+            /* Container(
               margin: EdgeInsets.only(
                 top: 15,
                 bottom: 10,
                 left: 10,
                 right: 10,
               ),
-              height: dummyData.length * 100 + 5.0 > 450
-                  ? 5.3 * 100 + 5.0
-                  : dummyData.length * 100 + 5.0,
+              height: 100,
+              // height: dummyData.length == null ? 0 : dummyData.length * 100 + 5.0 > 450
+              //     ? 5.3 * 100 + 5.0
+              //     : dummyData.length * 100 + 5.0,
               child: ListView.builder(
                 itemBuilder: (context, index) => MedicalHistoryItem(
                   dummyData[index]["day"],
                   dummyData[index]["report"],
                 ),
-                itemCount: dummyData.length,
+                itemCount: 3,
               ),
             ),
+            */
             Center(
               child: FloatingActionButton(
                 backgroundColor: Colors.deepPurpleAccent[100],

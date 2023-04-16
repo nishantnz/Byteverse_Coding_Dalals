@@ -31,7 +31,7 @@ class _DashboardState extends State<PatientDashboard> {
 
     final Map<String, String> headers = {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOM0daQVpNUU0wIiwiZXhwIjoxNjgxNjEzOTQ5fQ.iJV7aoJljZnpXof3YC3ut6tj6oVg4C8g2os1DCYxJ1I',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNVVJWFc2VkpCIiwiZXhwIjoxNjgxNjQ2OTc5fQ.aMyuUtWMTb1s78ihn44LTd5bXaL1OH-6JFe6mdncEZA',
       'Content-Type': 'application/json',
     };
 
