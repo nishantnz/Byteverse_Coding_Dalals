@@ -4,6 +4,8 @@ import 'package:health_ai/Screens/Patients/dashboard.dart';
 import 'package:health_ai/Screens/Patients/patients_history.dart';
 import 'package:health_ai/Screens/settings_screen.dart';
 
+import 'package:provider/provider.dart';
+
 class PatientMainPage extends StatefulWidget {
   PatientMainPage({super.key});
 

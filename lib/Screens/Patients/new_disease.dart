@@ -37,7 +37,7 @@ class addPatientDisease extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(14),
                 child: Text(
-                  "User Additional Details",
+                  "Add Disease",
                   style: TextStyle(
                     fontSize: 40,
                     color: Color(0xff432C81),

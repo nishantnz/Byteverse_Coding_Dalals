@@ -36,9 +36,6 @@ class PatientLoginScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   border: Border.all(color: Colors.black),
-          // ),
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
           padding: EdgeInsets.all(10),
           child: Column(

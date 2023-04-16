@@ -1,47 +1,38 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:health_ai/Screens/Patients/widgets/medical_history_item.dart';
+import 'package:http/http.dart' as http;
 import 'package:health_ai/utils/routes.dart';
 
-class PatientsHistory extends StatelessWidget {
-  var dummyData = [
-    {
-      'day': "friday",
-      'report': "no cancer",
-    },
-    {
-      'day': "thursday",
-      'report': "no tumor",
-    },
-    {
-      'day': "wednesday",
-      'report': "no eye disease",
-    },
-    {
-      'day': "monday",
-      'report': "yes cancer",
-    },
-    {
-      'day': "moonday",
-      'report': "yes cancer",
-    },
-    {
-      'day': "monday",
-      'report': "yesss cancer",
-    },
-    {
-      'day': "monday",
-      'report': "yesss cancer",
-    },
-    {
-      'day': "monday",
-      'report': "yesss cancer",
-    },
-    {
-      'day': "monday",
-      'report': "yesss cancer",
-    },
-  ];
+class PatientsHistory extends StatefulWidget {
+  // var dummyData = [
+  @override
+  State<PatientsHistory> createState() => _PatientsHistoryState();
+}
+
+class _PatientsHistoryState extends State<PatientsHistory> {
+  void getPatientHistory() async {
+    final Uri uri = Uri.parse(
+        'http://9886-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/users/history');
+    var request = http.Request('POST', uri);
+
+    final Map<String, String> headers = {
+      'Authorization':
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOM0daQVpNUU0wIiwiZXhwIjoxNjgxNjEzOTQ5fQ.iJV7aoJljZnpXof3YC3ut6tj6oVg4C8g2os1DCYxJ1I',
+      'Content-Type': 'application/json',
+    };
+
+    final http.Response response = await http.post(uri, headers: headers);
+    print(response.body);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getPatientHistory();
+  }
+
+  var dummyData = [];
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +85,8 @@ class PatientsHistory extends StatelessWidget {
             Center(
               child: FloatingActionButton(
                 backgroundColor: Colors.deepPurpleAccent[100],
-                onPressed: () => Navigator.of(context).pushNamed(MyRoutes.addPatientDisease),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(MyRoutes.addPatientDisease),
                 child: Icon(Icons.add),
               ),
             ),

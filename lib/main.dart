@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Health Ai',
-        initialRoute: MyRoutes.onBoarding,
+        initialRoute: MyRoutes.patientHistory,
         routes: {
           MyRoutes.onBoarding: (context) => OnBoarding(),
           MyRoutes.docloginPage: (context) => DoctorLoginScreen(),
