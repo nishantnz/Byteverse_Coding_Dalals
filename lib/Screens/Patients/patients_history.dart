@@ -21,23 +21,43 @@ class PatientsHistory extends StatelessWidget {
       'day': "monday",
       'report': "yes cancer",
     },
+    {
+      'day': "moonday",
+      'report': "yes cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
+    {
+      'day': "monday",
+      'report': "yesss cancer",
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Container(
-        margin: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Card(
-              elevation: 2,
-              margin: EdgeInsets.all(10),
-              color: Color(0x00432C81),
-              shape: RoundedRectangleBorder(
+            Container(
+              // margin: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 50, right: 10, left: 10),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
+                color: Color(0x44432C81),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -54,10 +74,13 @@ class PatientsHistory extends StatelessWidget {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                color: Color(0x00432C81),
+              margin: EdgeInsets.symmetric(
+                vertical: 30,
+                horizontal: 10,
               ),
-              height: 400,
+              height: dummyData.length * 75 + 5.0 > 450
+                  ? 6.4 * 75 + 5.0
+                  : dummyData.length * 75 + 5.0,
               child: ListView.builder(
                 itemBuilder: (context, index) => MedicalHistoryItem(
                   dummyData[index]["day"],
@@ -65,7 +88,14 @@ class PatientsHistory extends StatelessWidget {
                 ),
                 itemCount: dummyData.length,
               ),
-            )
+            ),
+            Center(
+              child: FloatingActionButton(
+                backgroundColor: Colors.deepPurpleAccent[100],
+                onPressed: null,
+                child: Icon(Icons.add),
+              ),
+            ),
           ],
         ),
       ),

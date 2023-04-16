@@ -10,34 +10,39 @@ class MedicalHistoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(MyRoutes.patientDetailedReportScreen);
-      },
-      child: Card(
-        elevation: 4,
-        margin: EdgeInsets.all(10),
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Text(
-                  day,
-                  style: TextStyle(fontSize: 20),
+    return Container(
+      height: 75,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pushNamed(MyRoutes.patientDetailedReportScreen);
+        },
+        child: Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 5, bottom: 2.5, left: 10),
+                  child: Text(
+                    day,
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Text(
-                  report,
-                  style: TextStyle(fontSize: 20),
+                Container(
+                  margin: EdgeInsets.only(top: 2.5, bottom: 5, left: 10),
+                  child: Text(
+                    report,
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
