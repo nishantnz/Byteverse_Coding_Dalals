@@ -1,42 +1,23 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'dart:convert';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:health_ai/utils/routes.dart';
-import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 
-class PatientSignUp extends StatelessWidget {
-  PatientSignUp({super.key});
+class addPatientDisease extends StatelessWidget {
+  final ageEditingController = TextEditingController();
+  final addressEditingController = TextEditingController();
 
-  Future SignIn() async {
-    var headers = {'Content-Type': 'application/json'};
-    var request = http.Request(
-      'POST',
-      Uri.parse(
-          'http://e63b-2409-4040-d94-94bc-c27-13c3-7df8-dcac.ngrok-free.app/auth/register'),
-    );
-    request.body = json.encode({
-      "name": nameEditingController.text,
-      "email": emailEditingController.text,
-      "password": passwordEditingController.text,
-      "role": "Patient"
-    });
-    request.headers.addAll(headers);
-
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
-      //print the response text
-      print("YOYOYO");
+  void handleImage(bool clickImage) async {
+    final ImagePicker picker = ImagePicker();
+    // Pick an image.
+    if (!clickImage) {
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     } else {
-      print(response.reasonPhrase);
+      // Capture a photo.
+      final XFile? photo = await picker.pickImage(source: ImageSource.camera);
     }
   }
-
-  final emailEditingController = TextEditingController();
-  final passwordEditingController = TextEditingController();
-  final nameEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +37,7 @@ class PatientSignUp extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(14),
                 child: Text(
-                  "User Sign Up",
+                  "Add Disease",
                   style: TextStyle(
                     fontSize: 40,
                     color: Color(0xff432C81),
@@ -64,21 +45,15 @@ class PatientSignUp extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(14),
-                height: 327,
-                width: 280,
-                child: Image.asset('assets/images/login1.png'),
-              ),
-              Container(
                 margin: EdgeInsets.only(top: 8, left: 8, right: 8),
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
                 ),
                 child: TextField(
-                  controller: nameEditingController,
+                  controller: ageEditingController,
                   decoration: InputDecoration.collapsed(
-                    hintText: 'Full Name',
+                    hintText: 'Age',
                   ),
                 ),
               ),
@@ -89,9 +64,10 @@ class PatientSignUp extends StatelessWidget {
                   border: Border.all(color: Colors.black),
                 ),
                 child: TextField(
-                  controller: emailEditingController,
+                  maxLines: 3,
+                  controller: addressEditingController,
                   decoration: InputDecoration.collapsed(
-                    hintText: 'Email',
+                    hintText: 'Address',
                   ),
                 ),
               ),
@@ -101,11 +77,20 @@ class PatientSignUp extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
                 ),
-                child: TextField(
-                  controller: passwordEditingController,
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Password',
-                  ),
+                child: TextButton(
+                  onPressed: () => handleImage(true),
+                  child: Text('Click Image'),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 8, left: 8, right: 8),
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                ),
+                child: TextButton(
+                  onPressed: () => handleImage(false),
+                  child: Text('Upload Image'),
                 ),
               ),
               Container(
@@ -116,34 +101,11 @@ class PatientSignUp extends StatelessWidget {
                     backgroundColor: Color(0xff432C81),
                   ),
                   onPressed: () {
-                    SignIn();
-
-                    Navigator.pushNamed(context, MyRoutes.getPatientData);
+                    // SignIn();
+                    Navigator.pushNamed(context, MyRoutes.patientMainPage);
                   },
-                  child: Text('Sign Up'),
+                  child: Text('Continue'),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Already Have an account?',
-                    style: TextStyle(
-                      color: Color(0xff432C81),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, MyRoutes.patientLogin);
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Color(0xff432C81),
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),
