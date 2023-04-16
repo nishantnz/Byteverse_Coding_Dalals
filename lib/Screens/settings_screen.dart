@@ -63,7 +63,6 @@ class SettingsPage extends StatelessWidget {
                 CommonWidget(Icons.notifications, 'Notification'),
                 CommonWidget(Icons.remove_red_eye, 'Appearance'),
                 CommonWidget(Icons.shield_rounded, 'Privacy and Security'),
-                CommonWidget(Icons.volume_up, 'Sound'),
                 LogoutButton(),
               ],
             )
@@ -81,27 +80,32 @@ class LogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(9),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            'Logout',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.red,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, MyRoutes.doctorOrPatient);
+      },
+      child: Container(
+        margin: EdgeInsets.all(9),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'Logout',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.red,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: Icon(
-              Icons.logout_rounded,
-              color: Colors.red,
-              size: 20,
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Icon(
+                Icons.logout_rounded,
+                color: Colors.red,
+                size: 20,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
