@@ -1,0 +1,7 @@
+Flask==2.2.2
+gunicorn
+numpy==1.23.5
+pandas==1.5.3
+tensorflow==2.12.0
+tensorflow_hub==0.13.0
+Werkzeug==2.2.2

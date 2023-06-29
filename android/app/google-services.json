@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "236395330635",
+    "project_id": "healthai-byteverse",
+    "storage_bucket": "healthai-byteverse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236395330635:android:bd97ec3a27bbdc9eaf61ce",
+        "android_client_info": {
+          "package_name": "com.example.healthai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236395330635-9blnr8eu5f6eahdend751qjnln893hi7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr5W0RL4voGa27QG0uCeNikxzcvjB5EMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236395330635-9blnr8eu5f6eahdend751qjnln893hi7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
