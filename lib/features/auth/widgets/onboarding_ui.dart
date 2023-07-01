@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthai/colors.dart';
 
 class OnBoardingUi extends StatelessWidget {
   final String title;
@@ -34,7 +35,7 @@ class OnBoardingUi extends StatelessWidget {
                   fontFamily: "Poppins",
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepPurple,
+                  color: tabColor,
                 ),
               ),
               const SizedBox(height: 20),

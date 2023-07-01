@@ -66,10 +66,10 @@ class PatientDetailedReport extends StatelessWidget {
                   height: 10,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.pushNamed(
+                  onTap: () => Navigator.push(
                     context,
-                    ReportImageDoctor.routeName,
-                  ),
+                    MaterialPageRoute(builder: (context) =>  ReportImageDoctor(image: reportImage)),
+                  ), 
                   child: Container(
                     height: 250,
                     width: 250,

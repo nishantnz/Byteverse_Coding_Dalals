@@ -8,8 +8,6 @@ import 'package:healthai/features/auth/screen/patient/patient_auth_screen.dart';
 import 'package:healthai/features/auth/screen/patient/patient_user_information.dart';
 import 'package:healthai/features/homepage/doctor/screens/doctor_all_scan_pages.dart';
 import 'package:healthai/features/homepage/doctor/screens/doctor_home_page.dart';
-import 'package:healthai/features/homepage/doctor/screens/patient_lab_analysis.dart';
-import 'package:healthai/features/homepage/doctor/screens/report_image_doctor.dart';
 import 'package:healthai/features/homepage/patient/screens/patient_all_scan_pages.dart';
 import 'package:healthai/features/homepage/patient/screens/patient_home_page.dart';
 import 'package:healthai/features/list%20of%20users/screens/list_of_doctors.dart';
@@ -49,7 +47,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (context) => const DoctorUserInformationScreen(),
       );
 
-    // PROFILE PAGE AND SETTINGS SCREEN
+    // PROFILE PAGE
     case DoctorProfilePage.routeName:
       return MaterialPageRoute(
         builder: (context) => const DoctorProfilePage(),
@@ -59,6 +57,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (context) => const PatientProfilePage(),
       );
 
+
+    // HOME PAGE
     case PatientHomePage.routeName:
       return MaterialPageRoute(
         builder: (context) => const PatientHomePage(),
@@ -98,16 +98,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           type: userTypeEnum,
         ),
       );
-
-    case DoctorPatientLabAnalysis.routeName:
-      return MaterialPageRoute(
-        builder: (context) => const DoctorPatientLabAnalysis(),
-      );
-    case ReportImageDoctor.routeName:
-      return MaterialPageRoute(
-        builder: (context) => const ReportImageDoctor(),
-      );
-
+    
+    // showing list of scans
     case DoctorAllScanPages.routeName:
       return MaterialPageRoute(
         builder: (context) => const DoctorAllScanPages(),
@@ -117,6 +109,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const PatientAllScanPages(),
       );
+    
+    // Showing list of users
     case ListOfDoctors.routeName:
       return MaterialPageRoute(
         builder: (context) => const ListOfDoctors(),
@@ -126,6 +120,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (context) => const ListofPatients(),
       );
 
+    // showing list of reports
     case DoctorAllReports.routeName:
       return MaterialPageRoute(
         builder: (context) => const DoctorAllReports(),
@@ -134,6 +129,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const ListofPatientsForReports(),
       );
+
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(

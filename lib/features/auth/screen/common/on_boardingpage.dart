@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthai/colors.dart';
 import 'package:healthai/features/auth/screen/common/doctor_or_patient.dart';
 import 'package:healthai/features/auth/widgets/onboarding_ui.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -71,7 +72,7 @@ class _OnBoardingState extends State<OnBoarding> {
         bottomSheet: isLastPage
             ? ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: tabColor,
                   minimumSize: const Size(double.infinity, 60),
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -107,7 +108,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepPurple,
+                          color: tabColor,
                         ),
                       ),
                     ),

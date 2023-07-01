@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ReportImageDoctor extends StatelessWidget {
-  const ReportImageDoctor({super.key});
-
-  static const routeName = '/report-image-doctor';
+  const ReportImageDoctor({
+    super.key,
+    required this.image,
+  });
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +17,8 @@ class ReportImageDoctor extends StatelessWidget {
             boundaryMargin: const EdgeInsets.all(20),
             minScale: 0.1,
             maxScale: 4.0,
-            child: Image.asset(
-              "assets/images/xray.jpg",
+            child: Image.network(
+              image,
               fit: BoxFit.cover,
             ),
           ),
